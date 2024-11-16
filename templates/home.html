@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create AI Agent</title>
+    <style>
+        :root {
+            --primary: #6B46C1;
+            --primary-dark: #553C9A;
+            --primary-light: #9F7AEA;
+            --bg-light: #FAF5FF;
+            --text-dark: #2D3748;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #fff 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(107, 70, 193, 0.15);
+            padding: 40px;
+        }
+
+        h1 {
+            color: var(--primary-dark);
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary-light);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(159, 122, 234, 0.2);
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .file-input-label {
+            display: block;
+            padding: 12px 20px;
+            background: var(--bg-light);
+            border: 2px dashed var(--primary-light);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            color: var(--primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .file-input-label:hover {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(107, 70, 193, 0.2);
+        }
+
+        .decorative-shape {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary-light);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .shape-1 {
+            top: -150px;
+            right: -150px;
+        }
+
+        .shape-2 {
+            bottom: -150px;
+            left: -150px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="decorative-shape shape-1"></div>
+    <div class="decorative-shape shape-2"></div>
+
+    <div class="container">
+        <div class="card">
+            <h1>Create Your AI KOL for a MemeCoin</h1>
+            <form action="/create_agent" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="input1">Name of the Memecoin</label>
+                    <input type="text" id="input1" name="input1" required placeholder="Enter Name of memecoin">
+                </div>
+
+                <div class="form-group">
+                    <label for="input2">Symbol</label>
+                    <input type="text" id="input2" name="input2" required placeholder="e.g, BRETT">
+                </div>
+
+                <div class="form-group">
+                    <label for="input3">Total Supply</label>
+                    <input type="text" id="input3" name="input3" required placeholder="Total supply of the memecoin">
+                </div>
+
+                <div class="form-group">
+                    <label for="input4">Images</label>
+                    <input type="text" id="input4" name="input4" required placeholder="Link for images">
+                </div>
+
+                <div class="form-group">
+                    <label>Upload meme coin relevant documents</label>
+                    <div class="file-input-wrapper">
+                        <label class="file-input-label" for="pdf">
+                            <span id="file-name">Choose a PDF file</span>
+                        </label>
+                        <input type="file" id="pdf" name="pdf" accept=".pdf" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Create AI Agent</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('pdf').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name || 'Choose a PDF file';
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+</body>
+</html>

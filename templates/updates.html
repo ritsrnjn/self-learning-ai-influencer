@@ -1,0 +1,69 @@
+<!-- templates/updates.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Updates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        #updates {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .update-item {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease-in;
+        }
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .action-type {
+            font-weight: bold;
+            color: #2196F3;
+        }
+        .details {
+            margin-top: 5px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div id="updates"></div>
+
+    <script>
+        const updates = document.getElementById('updates');
+        
+        const eventSource = new EventSource('/api/stream');
+        
+        eventSource.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            
+            const updateItem = document.createElement('div');
+            updateItem.className = 'update-item';
+            
+            updateItem.innerHTML = `
+                <div class="timestamp">${data.timestamp}</div>
+                <div class="action-type">${data.action_type}</div>
+                <div class="details">${data.details}</div>
+            `;
+            
+            updates.insertBefore(updateItem, updates.firstChild);
+        };
+        
+        eventSource.onerror = function(e) {
+            console.log('Error:', e);
+        };
+    </script>
+</body>
+</html>

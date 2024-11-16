@@ -1,0 +1,11 @@
+Flask==2.3.2
+
+openai==1.54.4
+python-dotenv==1.0.0
+fal-client
+requests
+schedule
+cdp-langchain
+asyncio
+logging
+pytest

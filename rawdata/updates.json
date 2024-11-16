@@ -1,0 +1,87 @@
+[
+  {
+    "timestamp": "2024-11-17 05:50:53",
+    "action_type": "TRANSFER TOKENS COMPLETED",
+    "details": "Transfer completed"
+  },
+  {
+    "timestamp": "2024-11-17 05:50:53",
+    "action_type": "TOKEN TRANSFER DETAILS",
+    "details": "The transfer of 0.0001 ETH to the address **0xf12df2DCc746150f1cfF5E31E987B04410ADf4d1** has been successfully completed.\n\n- **Transaction Hash:** [0x82b8d4d6500015e3a72d10f7f079bfc2111ec9f33d9a3e7e9b59d97175496768](https://sepolia.basescan.org/tx/0x82b8d4d6500015e3a72d10f7f079bfc2111ec9f33d9a3e7e9b59d97175496768)\n\nIf you need any further assistance, feel free to ask!"
+  },
+  {
+    "timestamp": "2024-11-17 05:50:01",
+    "action_type": "TRANSFER TOKENS INITIATED",
+    "details": "Transferring tokens to address: 0xf12df2DCc746150f1cfF5E31E987B04410ADf4d1"
+  },
+  {
+    "timestamp": "2024-11-17 05:48:51",
+    "action_type": "TRANSFER TOKENS COMPLETED",
+    "details": "Transfer completed"
+  },
+  {
+    "timestamp": "2024-11-17 05:48:51",
+    "action_type": "TOKEN TRANSFER DETAILS",
+    "details": "The transaction of **0.0001 ETH** has been successfully transferred to **0xA50D250Ba7FDf522008dF7300F3B9230bDbbfffa**. \n\nYou can view the transaction details [here](https://sepolia.basescan.org/tx/0x9f43db491da3d69da6f6de518df34c4a879150892d82f49864f8f234c505a72f)."
+  },
+  {
+    "timestamp": "2024-11-17 05:48:06",
+    "action_type": "TRANSFER TOKENS INITIATED",
+    "details": "Transferring tokens to address: 0xA50D250Ba7FDf522008dF7300F3B9230bDbbfffa"
+  },
+  {
+    "timestamp": "2024-11-17 05:47:20",
+    "action_type": "TRANSFER TOKENS COMPLETED",
+    "details": "Transfer completed"
+  },
+  {
+    "timestamp": "2024-11-17 05:46:57",
+    "action_type": "TRANSFER TOKENS INITIATED",
+    "details": "Transferring tokens to address: 0xA50D250Ba7FDf522008dF7300F3B9230bDbbfffa"
+  },
+  {
+    "timestamp": "2024-11-17 05:45:55",
+    "action_type": "TRANSFER TOKENS INITIATED",
+    "details": "Transferring tokens to address: 0xA50D250Ba7FDf522008dF7300F3B9230bDbbfffa"
+  },
+  {
+    "timestamp": "2024-11-17 05:44:00",
+    "action_type": "TRANSFER TOKENS COMPLETED",
+    "details": "Transfer completed"
+  },
+  {
+    "timestamp": "2024-11-17 05:44:00",
+    "action_type": "TOKEN TRANSFER COMPLETED",
+    "details": "Transferred 0.0001 ETH to 0xA50D250Ba7FDf522008dF7300F3B9230bDbbfffa. Transaction: /tx/0x085e5e63fac1d0d34ad4aaf7b45996665284b460cc53370f85c37dd4c490be12).\n\nIf you have any more requests or need further assistance, feel free to ask!"
+  },
+  {
+    "timestamp": "2024-11-17 05:43:27",
+    "action_type": "TRANSFER TOKENS INITIATED",
+    "details": "Transferring tokens to address: 0xA50D250Ba7FDf522008dF7300F3B9230bDbbfffa"
+  },
+  {
+    "timestamp": "2024-11-17 05:41:17",
+    "action_type": "MEMECOIN CREATED",
+    "details": "Meme coin created with name: BRETT and symbol: BRETTTT"
+  },
+  {
+    "timestamp": "2024-11-17 05:40:56",
+    "action_type": "INITIATING WEB3 AGENT CREATION",
+    "details": "Creating agent which will handle web3 trasactions"
+  },
+  {
+    "timestamp": "2024-11-17 05:38:05",
+    "action_type": "AIRDROP TOKENS INITIATED",
+    "details": "Airdropping tokens to addresses from the following list: ['0xA50D250Ba7FDf522008dF7300F3B9230bDbbfffa', '0xC4a1F85DeEe4407DF9d88F697a7B496950dc18F6']"
+  },
+  {
+    "timestamp": "2024-11-17 05:38:05",
+    "action_type": "MEMECOIN CREATED",
+    "details": "Meme coin created with name: BRETT and symbol: BRETTTT"
+  },
+  {
+    "timestamp": "2024-11-17 05:37:49",
+    "action_type": "INITIATING WEB3 AGENT CREATION",
+    "details": "Creating agent which will handle web3 trasactions"
+  }
+]

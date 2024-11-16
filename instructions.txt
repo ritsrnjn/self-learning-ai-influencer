@@ -1,0 +1,3 @@
+- always use the latest version of the code
+- always build in a iterative way
+- be super iterative with small changes

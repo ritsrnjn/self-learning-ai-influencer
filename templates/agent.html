@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Agent Dashboard</title>
+    <style>
+        :root {
+            --primary: #6B46C1;
+            --primary-dark: #553C9A;
+            --primary-light: #9F7AEA;
+            --bg-light: #FAF5FF;
+            --text-dark: #2D3748;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+            min-height: 100vh;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 30px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .agent-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(107, 70, 193, 0.15);
+            padding: 30px;
+            height: calc(100vh - 100px);
+            position: sticky;
+            top: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .agent-avatar {
+            width: 120px;
+            height: 120px;
+            background: var(--primary-light);
+            border-radius: 60px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar-text {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .agent-name {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .agent-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .agent-details {
+            margin-top: 30px;
+            flex-grow: 1;
+        }
+
+        .detail-item {
+            margin-bottom: 20px;
+        }
+
+        .detail-label {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            color: var(--text-dark);
+            opacity: 0.8;
+        }
+
+        .view-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .view-btn {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .view-btn:not(.active) {
+            background: var(--bg-light);
+            color: var(--primary);
+        }
+
+        .view-btn:hover:not(.active) {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        .content-section, .updates-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(107, 70, 193, 0.15);
+            padding: 30px;
+            height: calc(100vh - 100px);
+            overflow-y: auto;
+            display: none;
+        }
+
+        .section-title {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .update-item {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .update-timestamp {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .update-content {
+            color: var(--text-dark);
+        }
+
+        .content-post {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(107, 70, 193, 0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .post-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .post-caption {
+            padding: 20px;
+            color: var(--text-dark);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .avatar-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 4px;
+        }
+
+        /* Active section */
+        .active-section {
+            display: block;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="dashboard">
+    <div class="agent-card">
+        <div class="agent-avatar">
+            <!-- Using the provided image link from input4 -->
+            <img src="{{ agent_info.image_link }}" alt="Coin Logo" class="avatar-image">
+        </div>
+        <h1 class="agent-name">{{ agent_info.coin_name }} KOL</h1>
+
+        <div class="agent-stats">
+            <div class="stat-card">
+                <div class="stat-value">{{ agent_info.symbol }}</div>
+                <div class="stat-label">Symbol</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{ agent_info.total_supply }}</div>
+                <div class="stat-label">Total Supply</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">Availability</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">Active</div>
+                <div class="stat-label">Status</div>
+            </div>
+        </div>
+
+        <div class="agent-details">
+            <div class="detail-item">
+                <div class="detail-label">Agent Type</div>
+                <div class="detail-value">Memecoin KOL</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label">Document</div>
+                <div class="detail-value">{{ agent_info.pdf_name }}</div>
+            </div>
+        </div>
+
+        <div class="view-buttons">
+            <button class="view-btn" onclick="switchView('content')">Content</button>
+            <button class="view-btn active" onclick="switchView('updates')">Live Updates</button>
+        </div>
+    </div>
+
+    <div class="content-section" id="content-section">
+        <h2 class="section-title">Generated Content</h2>
+        <div id="posts"></div>
+    </div>
+
+    <div class="updates-section active-section" id="updates-section">
+        <h2 class="section-title">Live Updates</h2>
+        <div id="updates"></div>
+    </div>
+</div>
+
+<script>
+    // Switch between views
+    function switchView(view) {
+        const contentSection = document.getElementById('content-section');
+        const updatesSection = document.getElementById('updates-section');
+        const buttons = document.querySelectorAll('.view-btn');
+
+        if (view === 'content') {
+            contentSection.classList.add('active-section');
+            updatesSection.classList.remove('active-section');
+            buttons[0].classList.add('active');
+            buttons[1].classList.remove('active');
+        } else {
+            updatesSection.classList.add('active-section');
+            contentSection.classList.remove('active-section');
+            buttons[1].classList.add('active');
+            buttons[0].classList.remove('active');
+        }
+    }
+
+    // Load posts
+    const postsData = {{ posts_data|tojson|safe }};
+
+    const postsContainer = document.getElementById('posts');
+    Object.entries(postsData).forEach(([id, post]) => {
+        const postElement = document.createElement('div');
+        postElement.className = 'content-post';
+        postElement.innerHTML = `
+            <img class="post-image" src="${post.generated_image_url}" alt="${post.headline}">
+            <div class="post-caption">${post.headline}</div>
+        `;
+        postsContainer.appendChild(postElement);
+    });
+
+
+    function refreshUpdates() {
+        fetch('/api/updates')
+            .then(response => response.json())
+            .then(updates => {
+                const updatesContainer = document.getElementById('updates');
+                updatesContainer.innerHTML = ''; // Clear existing updates
+
+                updates.forEach(update => {
+                    const updateItem = document.createElement('div');
+                    updateItem.className = 'update-item';
+                    updateItem.innerHTML = `
+                        <div class="update-timestamp">${update.timestamp}</div>
+                        <div class="update-content">
+                            <strong>${update.action_type}:</strong> ${update.details}
+                        </div>
+                    `;
+                    updatesContainer.appendChild(updateItem);
+                });
+            })
+            .catch(error => console.error('Error fetching updates:', error));
+    }
+    refreshUpdates();
+
+// Refresh every 3 seconds
+    setInterval(refreshUpdates, 6000);
+
+
+</script>
+</body>
+</html>

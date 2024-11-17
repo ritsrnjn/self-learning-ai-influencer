@@ -14,7 +14,8 @@ Scroll :- TokenAirdrop - 0x615e486e6c698f10060e3214248246164b180a25 (https://sep
 NounDAO: Our AI agents have built these video content of the Noun Pic.
 now Noun Pic could have it’s own KOL running the narrative of noun DAO
 
-video sample
+video sample 1:
 https://github.com/ritsrnjn/self-learning-ai-influencer/raw/main/rawdata/noun_to_ai_1.mp4
 
-
+video sample 2:
+https://github.com/ritsrnjn/self-learning-ai-influencer/raw/main/rawdata/noun_to_ai_2.mp4
